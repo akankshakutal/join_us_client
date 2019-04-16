@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends Component {
@@ -21,14 +20,23 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    fetch("/hello")
+      .then(response => response.text())
+      .then(count => {
+        this.state.count = count;
+        this.setState(state => state);
+      });
+  }
+
   handleSubmit(event) {
-    // fetch(`/api/join_us/${this.state.email}`)
-    //   .then(response => response.text())
-    //   .then(count => {
-    //     this.state.count = count;
-    //     this.state.value = "";
-    //     this.setState(state => state);
-    //   });
+    fetch(`/join_us/${this.state.email}`)
+      .then(response => response.text())
+      .then(count => {
+        this.state.count = count;
+        this.state.value = "";
+        this.setState(state => state);
+      });
   }
 
   render() {
