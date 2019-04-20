@@ -25,6 +25,9 @@ class App extends Component {
       .then(response => response.text())
       .then(count => {
         this.state.count = count;
+        if (isNaN(parseInt(count))) {
+          this.state.count = 0;
+        }
         this.setState(state => state);
       });
   }
@@ -34,6 +37,9 @@ class App extends Component {
       .then(response => response.text())
       .then(count => {
         this.state.count = count;
+        if (isNaN(parseInt(count))) {
+          this.state.count = 0;
+        }
         this.state.value = "";
         this.setState(state => state);
       });
